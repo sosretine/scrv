@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -40,25 +41,29 @@
 <label for="q">Ville, code postal ou nom<input id="q" type="search" placeholder="Ex. Cannes, 06400, Angers" autocomplete="off"></label>
 <p id="count" class="note" style="flex:1 1 200px" aria-live="polite">41 chirurgiens</p>
 </form>
+<div class="mapbox">
+<div id="map" role="region" aria-label="Carte des chirurgiens membres de la SCRV"></div>
+<div class="map-tabs" role="group" aria-label="Zone affichée"><button type="button" data-zone="fr" aria-pressed="true">Métropole</button><button type="button" data-zone="re" aria-pressed="false">La Réunion</button></div>
+</div>
 <p class="note"><span class="star">★</span> participe aux études de la SCRV · <span class="star">★★</span> participe régulièrement. Liste 2022-2023 : si vos coordonnées ont changé, écrivez à <a href="mailto:secretariat.scrv@free.fr">secretariat.scrv@free.fr</a>.</p>
-<div id="list"><div class="dept" data-dept><h3>06 · Alpes-Maritimes</h3><ul><li data-q="jean-paul amar 29 bld de la ferrage 06400 cannes"><b>Jean-Paul Amar <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>29 Bld de la Ferrage 06400 Cannes</span></li><li data-q="sylvain el-khoury chemin de clavary 06130 grasse"><b>Sylvain El-Khoury <span class="star" title="Participe aux études de la SCRV">★</span></b><span>Chemin de Clavary 06130 Grasse</span></li><li data-q="alexandre portmann 29 bld de la ferrage 06400 cannes"><b>Alexandre Portmann <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>29 Bld de la Ferrage 06400 Cannes</span></li><li data-q="edouard calin 938 av de la république 06550 la roquette sur siagne"><b>Edouard Calin</b><span>938 Av de la République 06550 La Roquette sur Siagne</span></li><li data-q="olivier cauchi 8 av du 11 novembre 06130 grasse"><b>Olivier Cauchi</b><span>8 av du 11 novembre 06130 Grasse</span></li></ul></div>
-<div class="dept" data-dept><h3>13 · Bouches-du-Rhône</h3><ul><li data-q="razi lalmas 6 place victor schoelcher 13090 aix en provence"><b>Razi Lalmas</b><span>6 place victor schoelcher 13090 Aix en Provence</span></li></ul></div>
-<div class="dept" data-dept><h3>14 · Calvados</h3><ul><li data-q="alice degoumois 20 avenue georges guynemer 14000 caen"><b>Alice Degoumois <span class="star" title="Participe aux études de la SCRV">★</span></b><span>20 avenue Georges Guynemer 14000 Caen</span></li></ul></div>
-<div class="dept" data-dept><h3>29 · Finistère</h3><ul><li data-q="loïc bazin centre rétine pasteur 34 rue du moulin à poudre 29200 brest"><b>Loïc Bazin <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>Centre rétine Pasteur 34 rue du Moulin à Poudre 29200 Brest</span></li><li data-q="guy l&#x27;helgoual&#x27;ch centre rétine pasteur 34 rue du moulin à poudre 29200 brest"><b>Guy L&#x27;Helgoual&#x27;ch <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>Centre rétine Pasteur 34 rue du Moulin à Poudre 29200 Brest</span></li><li data-q="tanguy thiery centre rétine pasteur 34 rue du moulin à poudre 29200 brest"><b>Tanguy Thiery <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>Centre rétine Pasteur 34 rue du Moulin à Poudre 29200 Brest</span></li></ul></div>
-<div class="dept" data-dept><h3>30 · Gard</h3><ul><li data-q="pascale genin 16 allée claire fontaine 30400 villeneuve les avignon"><b>Pascale Genin <span class="star" title="Participe aux études de la SCRV">★</span></b><span>16 allée claire fontaine 30400 Villeneuve Les Avignon</span></li></ul></div>
-<div class="dept" data-dept><h3>38 · Isère</h3><ul><li data-q="pierre albinet 75 avenue gabriel peri 38400 saint martin d&#x27;hères"><b>Pierre Albinet <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>75 avenue Gabriel Peri 38400 Saint martin d&#x27;hères</span></li><li data-q="nischal aryal-charles 75 avenue gabriel péri 38400 saint martin d&#x27;heres"><b>Nischal Aryal-Charles <span class="star" title="Participe aux études de la SCRV">★</span></b><span>75 avenue Gabriel Péri 38400 Saint martin d&#x27;heres</span></li></ul></div>
-<div class="dept" data-dept><h3>42 · Loire</h3><ul><li data-q="alexandre guillaubey 37, place chavanelle 42000 st-etienne"><b>Alexandre Guillaubey <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>37, Place Chavanelle 42000 St-Etienne</span></li><li data-q="laure malvitte 37, place chavanelle 42000 saint etienne"><b>Laure Malvitte</b><span>37, Place Chavanelle 42000 Saint Etienne</span></li></ul></div>
-<div class="dept" data-dept><h3>49 · Maine-et-Loire</h3><ul><li data-q="mounir benzerroug 140 avenue de lattre de tassigny 49000 angers"><b>Mounir Benzerroug <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>140 avenue de Lattre de Tassigny 49000 Angers</span></li><li data-q="cherif mazit 140 avenue de lattre de tassigny 49000 angers"><b>Cherif Mazit <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>140 avenue de lattre de tassigny 49000 Angers</span></li></ul></div>
-<div class="dept" data-dept><h3>59 · Nord</h3><ul><li data-q="emna saihi 5 rue desire blanquet 59300 famars"><b>Emna Saihi</b><span>5 rue desire blanquet 59300 Famars</span></li></ul></div>
-<div class="dept" data-dept><h3>64 · Pyrénées-Atlantiques</h3><ul><li data-q="frédéric hamon centre helios ophtalmologie. za de layats ii. 64500 st jean de luz"><b>Frédéric Hamon <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>Centre Helios Ophtalmologie. ZA de Layats II. 64500 St Jean de Luz</span></li><li data-q="alexis pinel 11 boulevard guillemin, 64000 pau"><b>Alexis Pinel</b><span>11 boulevard guillemin, 64000 PAU</span></li></ul></div>
-<div class="dept" data-dept><h3>67 · Bas-Rhin</h3><ul><li data-q="jean-christophe bijon 7b, rue de l&#x27;hopital 67600 selestat"><b>Jean-Christophe Bijon <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>7b, rue de l&#x27;hopital 67600 Selestat</span></li><li data-q="chahrokh elahi 1 rue des tonneliers 67000 strasbourg"><b>Chahrokh Elahi <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>1 RUE DES TONNELIERS 67000 Strasbourg</span></li><li data-q="olivier naoun 25 rue de lausanne 67000 strasbourg"><b>Olivier Naoun</b><span>25 rue de lausanne 67000 Strasbourg</span></li><li data-q="karim mekhzer 10 rue marche aux grains 67500 haguenau"><b>Karim Mekhzer</b><span>10 rue marche aux grains 67500 Haguenau</span></li></ul></div>
-<div class="dept" data-dept><h3>69 · Rhône</h3><ul><li data-q="nicolas chirpaz lyon"><b>Nicolas Chirpaz <span class="star" title="Participe aux études de la SCRV">★</span></b><span>LYON</span></li></ul></div>
-<div class="dept" data-dept><h3>73 · Savoie</h3><ul><li data-q="pierre-olivier lafontaine 124 allée albert sylvestre 73000 chambéry"><b>Pierre-Olivier Lafontaine <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>124 Allée Albert Sylvestre 73000 Chambéry</span></li><li data-q="alexander may 124 alle albert sylvestre 73000 chambéry"><b>Alexander May</b><span>124 alle Albert Sylvestre 73000 Chambéry</span></li></ul></div>
-<div class="dept" data-dept><h3>75 · Paris</h3><ul><li data-q="thibaut chapron 29 rue manin 75019 paris"><b>Thibaut Chapron</b><span>29 Rue Manin 75019 Paris</span></li><li data-q="houyem jguerim 29 rue manin 75019 paris"><b>Houyem Jguerim <span class="star" title="Participe aux études de la SCRV">★</span></b><span>29 Rue Manin 75019 Paris</span></li><li data-q="youssef abdelmassih 29 rue manin 75019 paris"><b>Youssef Abdelmassih</b><span>29 Rue Manin 75019 Paris</span></li></ul></div>
-<div class="dept" data-dept><h3>80 · Somme</h3><ul><li data-q="andrei drimbea 6 rue de l&#x27;ours et la lune 80000 amiens"><b>Andrei Drimbea <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>6 Rue de l&#x27;Ours et la Lune 80000 Amiens</span></li><li data-q="camille roussel 6 rue de l’ours et de la lune 80000 amiens"><b>Camille Roussel <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>6 rue de l’ours et de la lune 80000 Amiens</span></li><li data-q="erwan fauviaux 1 rue du professeur christian cabrol 80000 amiens"><b>Erwan Fauviaux</b><span>1 rue du professeur Christian Cabrol 80000 Amiens</span></li><li data-q="maxime gherras 1 rue du professeur christian cabrol 80000 amiens"><b>Maxime Gherras</b><span>1 rue du professeur Christian Cabrol 80000 Amiens</span></li><li data-q="soufiane souissi 59 rue alexandre dumas 80000 amiens"><b>Soufiane Souissi</b><span>59 Rue Alexandre Dumas 80000 Amiens</span></li></ul></div>
-<div class="dept" data-dept><h3>83 · Var</h3><ul><li data-q="christophe baeteman place général de gaule 83160 la valette du var"><b>Christophe Baeteman</b><span>Place général De Gaule 83160 La Valette du Var</span></li><li data-q="marc cottard 59 rue marceau 83310 cogolin"><b>Marc Cottard</b><span>59 rue Marceau 83310 Cogolin</span></li><li data-q="danielle deidier 3 rue brest 83400 hyères"><b>Danielle Deidier</b><span>3 rue Brest 83400 Hyères</span></li></ul></div>
-<div class="dept" data-dept><h3>92 · Hauts-de-Seine</h3><ul><li data-q="richard luscan 173 grande rue 92380 garches"><b>Richard Luscan</b><span>173 Grande Rue 92380 Garches</span></li><li data-q="sina elahi 63 boulevard jean jaurès 92110 clichy"><b>Sina Elahi <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>63 Boulevard Jean Jaurès 92110 Clichy</span></li></ul></div>
-<div class="dept" data-dept><h3>974 · La Réunion</h3><ul><li data-q="michel caille 162 rue juliette dodu 97400 saint-denis"><b>Michel Caille</b><span>162 rue Juliette DODU 97400 Saint-Denis</span></li></ul></div></div>
+<div id="list"><div class="dept" data-dept><h3>06 · Alpes-Maritimes</h3><ul><li data-ll="43.5530,7.0170" data-q="jean-paul amar 29 bld de la ferrage 06400 cannes"><b>Jean-Paul Amar <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>29 Bld de la Ferrage 06400 Cannes</span></li><li data-ll="43.6440,6.9445" data-q="sylvain el-khoury chemin de clavary 06130 grasse"><b>Sylvain El-Khoury <span class="star" title="Participe aux études de la SCRV">★</span></b><span>Chemin de Clavary 06130 Grasse</span></li><li data-ll="43.5530,7.0170" data-q="alexandre portmann 29 bld de la ferrage 06400 cannes"><b>Alexandre Portmann <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>29 Bld de la Ferrage 06400 Cannes</span></li><li data-ll="43.5960,6.9560" data-q="edouard calin 938 av de la république 06550 la roquette sur siagne"><b>Edouard Calin</b><span>938 Av de la République 06550 La Roquette sur Siagne</span></li><li data-ll="43.6580,6.9230" data-q="olivier cauchi 8 av du 11 novembre 06130 grasse"><b>Olivier Cauchi</b><span>8 av du 11 novembre 06130 Grasse</span></li></ul></div>
+<div class="dept" data-dept><h3>13 · Bouches-du-Rhône</h3><ul><li data-ll="43.5160,5.4480" data-q="razi lalmas 6 place victor schoelcher 13090 aix en provence"><b>Razi Lalmas</b><span>6 place victor schoelcher 13090 Aix en Provence</span></li></ul></div>
+<div class="dept" data-dept><h3>14 · Calvados</h3><ul><li data-ll="49.1960,-0.3790" data-q="alice degoumois 20 avenue georges guynemer 14000 caen"><b>Alice Degoumois <span class="star" title="Participe aux études de la SCRV">★</span></b><span>20 avenue Georges Guynemer 14000 Caen</span></li></ul></div>
+<div class="dept" data-dept><h3>29 · Finistère</h3><ul><li data-ll="48.4060,-4.4700" data-q="loïc bazin centre rétine pasteur 34 rue du moulin à poudre 29200 brest"><b>Loïc Bazin <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>Centre rétine Pasteur 34 rue du Moulin à Poudre 29200 Brest</span></li><li data-ll="48.4060,-4.4700" data-q="guy l&#x27;helgoual&#x27;ch centre rétine pasteur 34 rue du moulin à poudre 29200 brest"><b>Guy L&#x27;Helgoual&#x27;ch <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>Centre rétine Pasteur 34 rue du Moulin à Poudre 29200 Brest</span></li><li data-ll="48.4060,-4.4700" data-q="tanguy thiery centre rétine pasteur 34 rue du moulin à poudre 29200 brest"><b>Tanguy Thiery <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>Centre rétine Pasteur 34 rue du Moulin à Poudre 29200 Brest</span></li></ul></div>
+<div class="dept" data-dept><h3>30 · Gard</h3><ul><li data-ll="43.9660,4.7900" data-q="pascale genin 16 allée claire fontaine 30400 villeneuve les avignon"><b>Pascale Genin <span class="star" title="Participe aux études de la SCRV">★</span></b><span>16 allée claire fontaine 30400 Villeneuve Les Avignon</span></li></ul></div>
+<div class="dept" data-dept><h3>38 · Isère</h3><ul><li data-ll="45.1720,5.7620" data-q="pierre albinet 75 avenue gabriel peri 38400 saint martin d&#x27;hères"><b>Pierre Albinet <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>75 avenue Gabriel Peri 38400 Saint martin d&#x27;hères</span></li><li data-ll="45.1720,5.7620" data-q="nischal aryal-charles 75 avenue gabriel péri 38400 saint martin d&#x27;heres"><b>Nischal Aryal-Charles <span class="star" title="Participe aux études de la SCRV">★</span></b><span>75 avenue Gabriel Péri 38400 Saint martin d&#x27;heres</span></li></ul></div>
+<div class="dept" data-dept><h3>42 · Loire</h3><ul><li data-ll="45.4340,4.3950" data-q="alexandre guillaubey 37, place chavanelle 42000 st-etienne"><b>Alexandre Guillaubey <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>37, Place Chavanelle 42000 St-Etienne</span></li><li data-ll="45.4340,4.3950" data-q="laure malvitte 37, place chavanelle 42000 saint etienne"><b>Laure Malvitte</b><span>37, Place Chavanelle 42000 Saint Etienne</span></li></ul></div>
+<div class="dept" data-dept><h3>49 · Maine-et-Loire</h3><ul><li data-ll="47.4590,-0.5380" data-q="mounir benzerroug 140 avenue de lattre de tassigny 49000 angers"><b>Mounir Benzerroug <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>140 avenue de Lattre de Tassigny 49000 Angers</span></li><li data-ll="47.4590,-0.5380" data-q="cherif mazit 140 avenue de lattre de tassigny 49000 angers"><b>Cherif Mazit <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>140 avenue de lattre de tassigny 49000 Angers</span></li></ul></div>
+<div class="dept" data-dept><h3>59 · Nord</h3><ul><li data-ll="50.3170,3.5190" data-q="emna saihi 5 rue desire blanquet 59300 famars"><b>Emna Saihi</b><span>5 rue desire blanquet 59300 Famars</span></li></ul></div>
+<div class="dept" data-dept><h3>64 · Pyrénées-Atlantiques</h3><ul><li data-ll="43.3880,-1.6450" data-q="frédéric hamon centre helios ophtalmologie. za de layats ii. 64500 st jean de luz"><b>Frédéric Hamon <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>Centre Helios Ophtalmologie. ZA de Layats II. 64500 St Jean de Luz</span></li><li data-ll="43.3070,-0.3530" data-q="alexis pinel 11 boulevard guillemin, 64000 pau"><b>Alexis Pinel</b><span>11 boulevard guillemin, 64000 PAU</span></li></ul></div>
+<div class="dept" data-dept><h3>67 · Bas-Rhin</h3><ul><li data-ll="48.2600,7.4530" data-q="jean-christophe bijon 7b, rue de l&#x27;hopital 67600 selestat"><b>Jean-Christophe Bijon <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>7b, rue de l&#x27;hopital 67600 Selestat</span></li><li data-ll="48.5800,7.7480" data-q="chahrokh elahi 1 rue des tonneliers 67000 strasbourg"><b>Chahrokh Elahi <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>1 RUE DES TONNELIERS 67000 Strasbourg</span></li><li data-ll="48.5770,7.7400" data-q="olivier naoun 25 rue de lausanne 67000 strasbourg"><b>Olivier Naoun</b><span>25 rue de lausanne 67000 Strasbourg</span></li><li data-ll="48.8160,7.7880" data-q="karim mekhzer 10 rue marche aux grains 67500 haguenau"><b>Karim Mekhzer</b><span>10 rue marche aux grains 67500 Haguenau</span></li></ul></div>
+<div class="dept" data-dept><h3>69 · Rhône</h3><ul><li data-ll="45.7600,4.8350" data-q="nicolas chirpaz lyon"><b>Nicolas Chirpaz <span class="star" title="Participe aux études de la SCRV">★</span></b><span>LYON</span></li></ul></div>
+<div class="dept" data-dept><h3>73 · Savoie</h3><ul><li data-ll="45.5770,5.9100" data-q="pierre-olivier lafontaine 124 allée albert sylvestre 73000 chambéry"><b>Pierre-Olivier Lafontaine <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>124 Allée Albert Sylvestre 73000 Chambéry</span></li><li data-ll="45.5770,5.9100" data-q="alexander may 124 alle albert sylvestre 73000 chambéry"><b>Alexander May</b><span>124 alle Albert Sylvestre 73000 Chambéry</span></li></ul></div>
+<div class="dept" data-dept><h3>75 · Paris</h3><ul><li data-ll="48.8790,2.3920" data-q="thibaut chapron 29 rue manin 75019 paris"><b>Thibaut Chapron</b><span>29 Rue Manin 75019 Paris</span></li><li data-ll="48.8790,2.3920" data-q="houyem jguerim 29 rue manin 75019 paris"><b>Houyem Jguerim <span class="star" title="Participe aux études de la SCRV">★</span></b><span>29 Rue Manin 75019 Paris</span></li><li data-ll="48.8790,2.3920" data-q="youssef abdelmassih 29 rue manin 75019 paris"><b>Youssef Abdelmassih</b><span>29 Rue Manin 75019 Paris</span></li></ul></div>
+<div class="dept" data-dept><h3>80 · Somme</h3><ul><li data-ll="49.8920,2.3080" data-q="andrei drimbea 6 rue de l&#x27;ours et la lune 80000 amiens"><b>Andrei Drimbea <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>6 Rue de l&#x27;Ours et la Lune 80000 Amiens</span></li><li data-ll="49.8920,2.3080" data-q="camille roussel 6 rue de l’ours et de la lune 80000 amiens"><b>Camille Roussel <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>6 rue de l’ours et de la lune 80000 Amiens</span></li><li data-ll="49.8710,2.2630" data-q="erwan fauviaux 1 rue du professeur christian cabrol 80000 amiens"><b>Erwan Fauviaux</b><span>1 rue du professeur Christian Cabrol 80000 Amiens</span></li><li data-ll="49.8710,2.2630" data-q="maxime gherras 1 rue du professeur christian cabrol 80000 amiens"><b>Maxime Gherras</b><span>1 rue du professeur Christian Cabrol 80000 Amiens</span></li><li data-ll="49.8840,2.3000" data-q="soufiane souissi 59 rue alexandre dumas 80000 amiens"><b>Soufiane Souissi</b><span>59 Rue Alexandre Dumas 80000 Amiens</span></li></ul></div>
+<div class="dept" data-dept><h3>83 · Var</h3><ul><li data-ll="43.1380,5.9830" data-q="christophe baeteman place général de gaule 83160 la valette du var"><b>Christophe Baeteman</b><span>Place général De Gaule 83160 La Valette du Var</span></li><li data-ll="43.2520,6.5310" data-q="marc cottard 59 rue marceau 83310 cogolin"><b>Marc Cottard</b><span>59 rue Marceau 83310 Cogolin</span></li><li data-ll="43.1200,6.1300" data-q="danielle deidier 3 rue brest 83400 hyères"><b>Danielle Deidier</b><span>3 rue Brest 83400 Hyères</span></li></ul></div>
+<div class="dept" data-dept><h3>92 · Hauts-de-Seine</h3><ul><li data-ll="48.8450,2.1830" data-q="richard luscan 173 grande rue 92380 garches"><b>Richard Luscan</b><span>173 Grande Rue 92380 Garches</span></li><li data-ll="48.9020,2.3110" data-q="sina elahi 63 boulevard jean jaurès 92110 clichy"><b>Sina Elahi <span class="star" title="Participe aux études de la SCRV">★★</span></b><span>63 Boulevard Jean Jaurès 92110 Clichy</span></li></ul></div>
+<div class="dept" data-dept><h3>974 · La Réunion</h3><ul><li data-ll="-20.8790,55.4510" data-q="michel caille 162 rue juliette dodu 97400 saint-denis"><b>Michel Caille</b><span>162 rue Juliette DODU 97400 Saint-Denis</span></li></ul></div></div>
 <p id="none" class="note" hidden>Aucun chirurgien ne correspond à cette recherche.</p>
 </div></section>
 <section class="sky"><div class="wrap grid g2" style="align-items:stretch">
@@ -68,12 +73,73 @@
 <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:auto"><a class="btn" href="https://sites.google.com/view/scrv/membres/devenir-membre-ou-cesser-d%C3%AAtre-membre" rel="noopener">Adhérer à la SCRV</a><a class="btn ghost" href="https://www.billetweb.fr/scrv-2026-votre-strategie-dans-le-dr" rel="noopener">Cotisation 2026</a></div></div>
 <div class="card" style="gap:12px"><h2 style="font-size:26px">Le bureau</h2><dl class="bureau"><div><dt>Président</dt><dd>Alexandre Portmann</dd></div><div><dt>Responsable du congrès</dt><dd>Andreï Drimbea</dd></div><div><dt>Secrétaire</dt><dd>Pierre Olivier Lafontaine</dd></div><div><dt>Trésorier</dt><dd>Alexandre Guillaubey</dd></div><div><dt>Responsable du site internet</dt><dd>Mounir Benzerroug</dd></div></dl></div>
 </div></section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
-(function(){var q=document.getElementById('q'),c=document.getElementById('count'),n=document.getElementById('none');
-var norm=function(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()};
+(function(){
+var q=document.getElementById('q'),c=document.getElementById('count'),n=document.getElementById('none');
+var norm=function(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase()};
+var esc=function(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML};
+var FR=[[42.2,-5.2],[51.2,8.3]], RE=[[-21.42,55.2],[-20.85,55.85]];
+
+/* Regroupe les praticiens par lieu d'exercice */
+var sites={}, order=[];
+document.querySelectorAll('#list li[data-ll]').forEach(function(li){
+  var k=li.dataset.ll;
+  if(!sites[k]){sites[k]={ll:k.split(',').map(Number),items:[],addr:li.querySelector('span').textContent};order.push(k)}
+  sites[k].items.push(li); li.dataset.site=k;
+});
+
+var map=null, markers={};
+function popup(site,vis){
+  var h='<div class="pop">';
+  vis.forEach(function(li){var b=li.querySelector('b').cloneNode(true);h+='<p class="pop-n">'+b.innerHTML+'</p>'});
+  var addr=site.addr;
+  h+='<p class="pop-a">'+esc(addr)+'</p><a class="pop-g" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(addr)+'">Ouvrir dans Google Maps</a></div>';
+  return h;
+}
+function icon(k){return L.divIcon({className:'pin',html:'<span>'+(k>1?k:'')+'</span>',iconSize:[30,30],iconAnchor:[15,15],popupAnchor:[0,-14]})}
+
+if(window.L){
+  map=L.map('map',{scrollWheelZoom:false,zoomSnap:.25});
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+  map.fitBounds(FR);
+  map.on('focus',function(){map.scrollWheelZoom.enable()});
+  map.on('blur',function(){map.scrollWheelZoom.disable()});
+  order.forEach(function(k){
+    var s=sites[k], m=L.marker(s.ll,{icon:icon(s.items.length),title:s.items.map(function(li){return li.querySelector('b').firstChild.textContent.trim()}).join(', ')});
+    m.bindPopup(popup(s,s.items),{maxWidth:280}); m.addTo(map); markers[k]=m;
+  });
+} else { document.querySelector('.mapbox').hidden=true; }
+
+/* Boutons Métropole / La Réunion */
+var tabs=document.querySelectorAll('.map-tabs button');
+function zone(z){tabs.forEach(function(t){t.setAttribute('aria-pressed',t.dataset.zone===z)});if(map)map.flyToBounds(z==='re'?RE:FR,{duration:.8})}
+tabs.forEach(function(t){t.addEventListener('click',function(){zone(t.dataset.zone)})});
+
+/* Clic sur un praticien de la liste : centre la carte sur son cabinet */
+document.querySelectorAll('#list li[data-ll]').forEach(function(li){
+  li.tabIndex=0; li.setAttribute('role','button'); li.title='Voir sur la carte';
+  var go=function(){if(!map)return;var m=markers[li.dataset.site];
+    tabs.forEach(function(t){t.setAttribute('aria-pressed',(t.dataset.zone==='re')===(m.getLatLng().lat<0))});
+    document.getElementById('map').scrollIntoView({behavior:'smooth',block:'center'});
+    map.flyTo(m.getLatLng(),13,{duration:.8});map.once('moveend',function(){m.openPopup()})};
+  li.addEventListener('click',go);
+  li.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+});
+
+/* Recherche : filtre la liste et la carte ensemble */
 q.addEventListener('input',function(){var v=norm(q.value.trim()),tot=0;
-document.querySelectorAll('[data-dept]').forEach(function(d){var k=0;d.querySelectorAll('li').forEach(function(li){var ok=!v||norm(li.dataset.q+' '+d.querySelector('h3').textContent).indexOf(v)>-1;li.hidden=!ok;if(ok)k++});d.hidden=!k;tot+=k});
-c.textContent=tot+(tot>1?' chirurgiens':' chirurgien');n.hidden=tot>0});})();
+  document.querySelectorAll('[data-dept]').forEach(function(d){var k=0;d.querySelectorAll('li').forEach(function(li){var ok=!v||norm(li.dataset.q+' '+d.querySelector('h3').textContent).indexOf(v)>-1;li.hidden=!ok;if(ok)k++});d.hidden=!k;tot+=k});
+  c.textContent=tot+(tot>1?' chirurgiens':' chirurgien');n.hidden=tot>0;
+  if(!map)return;
+  var pts=[];
+  order.forEach(function(k){var s=sites[k],vis=s.items.filter(function(li){return !li.hidden}),m=markers[k];
+    if(vis.length){if(!map.hasLayer(m))m.addTo(map);m.setIcon(icon(vis.length));m.setPopupContent(popup(s,vis));pts.push(s.ll)}
+    else map.removeLayer(m)});
+  if(v&&pts.length){map.flyToBounds(pts,{maxZoom:12,padding:[40,40],duration:.6})}
+  else if(!v){zone('fr')}
+});
+})();
 </script>
 
 </main>

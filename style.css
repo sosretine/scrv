@@ -134,3 +134,20 @@ footer.site a{color:#fff}
 @media (max-width:860px){ .hero .wrap{grid-template-columns:1fr} .hero h1{font-size:36px} }
 @media (max-width:640px){ h1,.page-head h1{font-size:32px} h2{font-size:26px} section{padding-block:52px} .brand span{display:none} }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important}}
+/* carte des membres */
+.mapbox{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 8px 24px rgba(11,36,64,.08)}
+#map{height:540px;background:var(--sky);font-family:var(--body)}
+.map-tabs{position:absolute;top:12px;right:12px;z-index:500;display:flex;background:#fff;border-radius:999px;padding:4px;box-shadow:0 2px 10px rgba(11,36,64,.18)}
+.map-tabs button{font:600 14px var(--head);border:0;background:transparent;color:var(--navy);padding:8px 14px;border-radius:999px;cursor:pointer;min-height:36px}
+.map-tabs button[aria-pressed="true"]{background:var(--blue);color:#fff}
+.pin span{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--blue);border:3px solid #fff;box-shadow:0 2px 8px rgba(11,36,64,.4);color:#fff;font:600 13px var(--head);transition:transform .15s}
+.pin:hover span{transform:scale(1.15);background:var(--fundus)}
+.leaflet-popup-content-wrapper{border-radius:10px}
+.leaflet-popup-content{margin:14px 16px;font-size:15px;line-height:1.4}
+.pop{display:flex;flex-direction:column;gap:4px}
+.pop-n{margin:0;font-weight:700;color:var(--navy)}
+.pop-a{margin:4px 0 6px;color:var(--muted)}
+.pop-g{font:600 13px var(--head);color:var(--blue)}
+.dept li[role="button"]{cursor:pointer;transition:border-color .15s}
+.dept li[role="button"]:hover{border-color:var(--blue-2)}
+@media (max-width:640px){#map{height:420px}}
