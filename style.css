@@ -189,3 +189,10 @@ footer.site a{color:#fff}
 .oeuvre p{color:#D9CCBB}
 @media (max-width:860px){.oeuvre .wrap{grid-template-columns:1fr;gap:32px}.oeuvre h2{font-size:30px}}
 @media (max-width:860px){.hero::after{background:rgba(11,36,64,.66)}}
+
+/* bandeaux : planche des lobules, nette, sur la moitié droite */
+.page-head{padding-block:72px;min-height:340px;display:flex;align-items:center}
+.page-head > .wrap{width:100%}
+.page-head::after,.page-head.ph-choroide::after,.page-head.ph-vasc::after{top:0;right:0;bottom:0;left:auto;width:52%;opacity:1;background:url(images/planche-lobules-choroidiens.jpg) center 45%/cover no-repeat;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 22%);mask-image:linear-gradient(to right,transparent 0%,#000 22%);z-index:-1}
+.page-head .wrap > *{max-width:600px}
+@media (max-width:760px){.page-head{padding-block:52px;min-height:240px}.page-head::after,.page-head.ph-choroide::after,.page-head.ph-vasc::after{width:100%;opacity:.3;-webkit-mask-image:none;mask-image:none}}
