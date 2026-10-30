@@ -41,7 +41,9 @@ a.card:hover{border-color:var(--blue-2);box-shadow:0 8px 24px rgba(11,36,64,.10)
 .card h3{color:var(--navy)} .card p{color:var(--muted);font-size:16px}
 .card .more{margin-top:auto;padding-top:4px;font-family:var(--head);font-weight:600;font-size:14px;color:var(--blue)}
 /* hero */
-.hero{background:linear-gradient(90deg,rgba(11,36,64,.95) 0%,rgba(11,36,64,.78) 45%,rgba(11,36,64,.35) 100%),url(images/fond-choroide.jpg) center/cover var(--navy);color:#fff}
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:url(images/fond-affiche-2026.jpg) center 40%/cover no-repeat;opacity:.95;filter:blur(1.5px);transform:scale(1.03)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(11,36,64,.82) 0%,rgba(11,36,64,.62) 40%,rgba(11,36,64,.2) 100%)}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;align-items:center;padding-block:64px}
 .hero h1{color:#fff;font-size:50px}
 .hero .lead{color:#C9D6E4}
@@ -186,3 +188,4 @@ footer.site a{color:#fff}
 .oeuvre .eyebrow{color:#E08A5A}
 .oeuvre p{color:#D9CCBB}
 @media (max-width:860px){.oeuvre .wrap{grid-template-columns:1fr;gap:32px}.oeuvre h2{font-size:30px}}
+@media (max-width:860px){.hero::after{background:rgba(11,36,64,.66)}}
